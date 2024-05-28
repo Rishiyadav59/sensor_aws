@@ -1,1 +1,2 @@
 numpy
+pymongo==4.2.0
