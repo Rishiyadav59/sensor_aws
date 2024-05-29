@@ -15,19 +15,19 @@ import os,sys
 
 
 class DataValidation:
-    logging.info("1")
 
-    def __init__(self,data_ingestion_artifact:DataIngestionArtifact,data_validation_config:DataValidationConfig):
+    def __init__(self,data_ingestion_artifact:DataIngestionArtifact,
+                        data_validation_config:DataValidationConfig):
         try:
             self.data_ingestion_artifact=data_ingestion_artifact
             self.data_validation_config=data_validation_config
             self._schema_config = read_yaml_file(SCHEMA_FILE_PATH)
         except Exception as e:
             raise  SensorException(e,sys)
-    logging.info("2")
+    
     def drop_zero_std_columns(self,dataframe):
         pass
-    logging.info("3")
+
 
     def validate_number_of_columns(self,dataframe:pd.DataFrame)->bool:
         try:
@@ -40,7 +40,7 @@ class DataValidation:
             return False
         except Exception as e:
             raise SensorException(e,sys)
-    logging.info("4")
+
     def is_numerical_column_exist(self,dataframe:pd.DataFrame)->bool:
         try:
             numerical_columns = self._schema_config["numerical_columns"]
