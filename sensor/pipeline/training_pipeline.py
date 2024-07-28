@@ -19,6 +19,7 @@ from sensor.entity.config_entity import DataTransformationConfig
 from sensor.components.model_pusher import ModelPusher
 
 
+
 from sensor.components.model_trainer import ModelTrainer
 from sensor.components.model_evelution import ModelEvaluation
 
@@ -27,6 +28,7 @@ from sensor.entity.config_entity import ModelTrainerConfig
 
 
 class TrainPipeline:
+    is_pipeline_running=False
 
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
@@ -136,6 +138,8 @@ class TrainPipeline:
 
     def run_pipeline(self):
         try:
+            TrainPipeline.is_pipeline_runnung=True
+
             data_ingestion_artifact:DataIngestionArtifact = self.start_data_ingestion()
 
 
@@ -160,7 +164,11 @@ class TrainPipeline:
 
             
             model_eval_artifact = self.start_model_pusher(model_eval_artifact) 
+
+            TrainPipeline.is_pipeline_running=False
             
         except Exception as e :    
+            TrainPipeline.is_pipeline_running=False
+            
             raise  SensorException(e,sys)
 

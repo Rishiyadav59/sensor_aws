@@ -5,7 +5,6 @@ PIPELINE_NAME = "sensor"
 ARTIFACT_DIR = "artifact"
 FILE_NAME = "sensor.csv"
 
-
 TRAIN_FILE_NAME: str = "train.csv"
 TEST_FILE_NAME: str = "test.csv"
 

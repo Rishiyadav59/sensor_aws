@@ -9,4 +9,6 @@ dill
 scipy 
 imblearn==0.0
 xgboost==1.6.2
+certifi
+fastapi
 -e .   #editable mode 
