@@ -128,7 +128,8 @@ venvSen/
 ENV/
 env.bak/
 venv.bak/
-deployment-steps.txt/
+.env
+
 
 # Spyder project settings
 .spyderproject
