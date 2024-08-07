@@ -67,7 +67,7 @@ class ModelTrainer:
                 raise Exception("Trained model is not good to provide expected accuracy")
             
             y_test_pred = model.predict(x_test)
-            print(x_test)
+            
 
             classification_test_metric = get_classification_score(y_true=y_test, y_pred=y_test_pred)
 
@@ -95,3 +95,5 @@ class ModelTrainer:
             return model_trainer_artifact
         except Exception as e:
             raise SensorException(e,sys)
+        
+        
