@@ -31,7 +31,7 @@
 4. ECR repo to store/save docker image
 	025066241615.dkr.ecr.ap-south-1.amazonaws.com/sensor-1234
 	
-5. EC2 machine  Ubuntu  Created
+5. EC2 machine  Ubuntu  Created 
 
 6. Open EC2 and Install docker in EC2 Machine 
 	
