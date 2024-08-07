@@ -1,21 +1,18 @@
-from sensor.configuration.mongo_db_connection import MongoDBClient
 from sensor.exception import SensorException
 import os , sys
 from sensor.logger import logging
+
 
 from sensor.pipeline.training_pipeline import TrainPipeline
 
 from sensor.pipeline.training_pipeline import TrainPipeline
 from sensor.utils.main_utils import load_object
-from sensor.ml.model.estimator import ModelResolver,TargetValueMapping
-from sensor.configuration.mongo_db_connection import MongoDBClient
+from sensor.ml.model.estimator import ModelResolver
 from sensor.exception import SensorException
 import os,sys
 from sensor.logger import logging
-from sensor.pipeline import training_pipeline
 from sensor.pipeline.training_pipeline import TrainPipeline
 import os
-from sensor.utils.main_utils import read_yaml_file
 from sensor.constant.training_pipeline import SAVED_MODEL_DIR
 
 from  fastapi import FastAPI
@@ -23,13 +20,13 @@ from sensor.constant.application import APP_HOST, APP_PORT
 from starlette.responses import RedirectResponse
 from uvicorn import run as app_run
 from fastapi.responses import Response
-from sensor.ml.model.estimator import ModelResolver,TargetValueMapping
+from sensor.ml.model.estimator import ModelResolver
 from sensor.utils.main_utils import load_object
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from fastapi import FastAPI, File, UploadFile, Response
-import pandas as pd
+from fastapi import FastAPI, Response
 
+import pandas as pd
 
 app = FastAPI()
 
@@ -75,24 +72,25 @@ async def train():
 @app.get("/predict")
 async def predict():
     try:
-
-    # get data and from the csv file 
-    # covert it into dataframe 
-
-        df =None
-
+        df= pd.read_csv("C:/Users/RISHI KUMAR YADAV/Desktop/sensor/Air-Break-Sensor/data.csv")
         Model_resolver = ModelResolver(model_dir=SAVED_MODEL_DIR)
         if not Model_resolver.is_model_exists():
-            return Response("Model is not available")
+            print("Model is not available")
         
         best_model_path = Model_resolver.get_best_model_path()
         model= load_object(file_path=best_model_path)
         y_pred=model.predict(df)
-        df['predicted_column'] = y_pred
-        df['predicted_column'].replace(TargetValueMapping().reverse_mapping,inplace=True)
+
+        if y_pred[0] > 0:
+            result = "pos"
+        else:
+            result = "neg"
+
+        #print(y_pred)
+        return Response(result)
 
 
-        # get the prediction output as you wnat 
+        
 
 
     except  Exception as e:
@@ -115,5 +113,6 @@ def main():
 
 
 if __name__ == "__main__":
+     
 
     app_run(app ,host=APP_HOST,port=APP_PORT)

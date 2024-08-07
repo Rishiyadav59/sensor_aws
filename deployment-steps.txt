@@ -26,10 +26,10 @@
 	3. AmazonS3FullAccess
 
 3.Create a s3 bukcet in ap-south-1
-	bucket name: scania-sensor-pipeline   # what ever you want 
+	sensor-123
 	
 4. ECR repo to store/save docker image
-	010526273267.dkr.ecr.ap-south-1.amazonaws.com/sensorlive123
+	025066241615.dkr.ecr.eu-north-1.amazonaws.com/sensor-123
 	
 5. EC2 machine  Ubuntu  Created
 
@@ -59,8 +59,8 @@ AWS_SECRET_ACCESS_KEY=
 
 AWS_REGION=ap-south-1
 
-AWS_ECR_LOGIN_URI= 010526273267.dkr.ecr.ap-south-1.amazonaws.com
+AWS_ECR_LOGIN_URI=025066241615.dkr.ecr.eu-north-1.amazonaws.com
 
-ECR_REPOSITORY_NAME= sensorlive123
+ECR_REPOSITORY_NAME=sensor-123
 
-MONGO_DB_URL=mongodb+srv://rishiyadav212:VDuKwgGvn61wgI7L@sensor.jyymi2h.mongodb.net/
+MONGO_DB_URL=mongodb+srv://rishiyadav212:VDuKwgGvn61wgI7L@sensor.5d2iiw4.mongodb.net/
