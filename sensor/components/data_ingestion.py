@@ -23,7 +23,7 @@ class DataIngestion:
         
 
     def export_data_into_feature_store(self) -> DataFrame:
-        logging.info("2")
+        logging.info("exporting data into feature store")
         """
         Export mongo db collection record as data frame into feature
         
@@ -53,7 +53,7 @@ class DataIngestion:
 
     def split_data_as_train_test(self, dataframe: DataFrame) -> None:
         try:
-            logging.info("yha")
+            logging.info("data split")
             
             train_set, test_set = train_test_split(
                 dataframe, test_size=self.data_ingestion_config.train_test_split_ratio
@@ -86,7 +86,7 @@ class DataIngestion:
 
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
         try:
-            logging.info("1")
+            logging.info("data initiation")
             dataframe = self.export_data_into_feature_store()
 
             dataframe=dataframe.drop(self._schema_config["drop_columns"],axis=1)
