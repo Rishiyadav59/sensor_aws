@@ -94,7 +94,7 @@ async def predict():
 
 
     except  Exception as e:
-        raise  SensorException(e,sys)
+        raise  SensorException(e,sys) 
 
 
 
