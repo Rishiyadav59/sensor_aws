@@ -23,12 +23,12 @@ from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 
 class TrainPipeline:
     is_pipeline_running=False
-    #self.s3_sync = S3Sync()
+    s3_sync = S3Sync()
 
 
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
-        self.s3_sync = S3Sync()
+        
 
 
     def start_data_ingestion(self)->DataIngestionArtifact:
