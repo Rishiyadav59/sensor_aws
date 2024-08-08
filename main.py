@@ -60,7 +60,7 @@ async def train():
         if training_pipeline.is_pipeline_running: 
             return Response("Training pipeline is already running.")
         
-        training_pipeline.run_pipeline()
+        training_pipeline.run_pipeline() 
         return Response("Training successfully completed!")
     except Exception as e:
         return Response(f"Error Occurred! {e}")
