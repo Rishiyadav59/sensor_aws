@@ -22,8 +22,8 @@ from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 
 
 class TrainPipeline:
-    is_pipeline_running=False
-    s3_sync = S3Sync()
+    is_pipeline_running=False 
+    #s3_sync = S3Sync()
 
 
     def __init__(self):
@@ -184,8 +184,8 @@ class TrainPipeline:
 
             model_pusher_artifact = self.start_model_pusher(model_eval_artifact)  
 
-            self.sync_artifact_dir_to_s3()
-            self.sync_saved_model_dir_to_s3() 
+            #self.sync_artifact_dir_to_s3()
+            #self.sync_saved_model_dir_to_s3() 
 
             TrainPipeline.is_pipeline_running=False
 
@@ -193,7 +193,7 @@ class TrainPipeline:
             
         except Exception as e : 
 
-            self.sync_artifact_dir_to_s3()        
+            #self.sync_artifact_dir_to_s3()        
             TrainPipeline.is_pipeline_running=False   
             raise  SensorException(e,sys)
 
