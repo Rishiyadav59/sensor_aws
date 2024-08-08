@@ -57,7 +57,7 @@ async def train():
 
         training_pipeline = TrainPipeline()
 
-        if training_pipeline.is_pipeline_running:
+        if training_pipeline.is_pipeline_running: 
             return Response("Training pipeline is already running.")
         
         training_pipeline.run_pipeline()

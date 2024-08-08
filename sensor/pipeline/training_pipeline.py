@@ -22,7 +22,7 @@ from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME
 
 
 class TrainPipeline:
-    is_pipeline_running=False 
+    is_pipeline_running=False  
     #s3_sync = S3Sync()
 
 
